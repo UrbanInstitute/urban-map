@@ -1,0 +1,97 @@
+@import url("http://fonts.googleapis.com/css?family=Lato");
+body {
+    font-family: 'Lato', sans-serif;
+    color: #333;
+}
+
+#map {
+    display: block;
+    width: 80%;
+    min-width: 400px;
+    margin: 0px auto;
+}
+
+.counties {
+    fill: none;
+    stroke: none;
+}
+
+.states {
+    fill: none;
+    stroke: #fff;
+    stroke-linejoin: round;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.county-name {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+.urban-map-tooltip {
+    padding: 10px;
+    background-color: white;
+    color: #333;
+    border: 1px solid #aaa;
+    pointer-events: none;
+}
+
+.urban-map-counties:hover {
+    stroke: orange;
+    opacity: 1;
+    stroke-width: 3px;
+    cursor: pointer;
+}
+
+.urban-map-states {
+    stroke: white;
+    stroke-linejoin: round;
+}
+
+.urban-map-legend {
+    display: none;
+}
+
+#legend,
+.legend {
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+    font-size: 12px;
+    margin-bottom: -20px;
+}
+
+.legend-item {
+    float: left;
+    margin-right: 2px
+}
+
+.greyed_out {
+    fill: #efefef;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.county-name {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+#figure1_map {
+    height: 100%;
+    width: 100%;
+}
+
+.urban-map {
+    width: 100%;
+    height: 500px;
+}

@@ -1,5 +1,5 @@
-//Non-responsive but Urban style - moving variables that user will define outside the map function
-
+var $map = $('#map');
+var us;
 var data_url = "data/schoolpoverty.csv";
 var json_url = "data/us.json";
 var names_url = "data/countynames.csv";
@@ -9,6 +9,11 @@ var legend_breaks = [0.2, 0.4, 0.6, 0.8, 1.0];
 var legend_left = 0;
 var formatter = d3.format("%");
 
+var map_aspect_width = 1.7;
+var map_aspect_height = 1;
+
+var value = {};
+var countyname = {};
 
 function plainmap() {
 
@@ -19,8 +24,10 @@ function plainmap() {
         left: 10
     };
 
-    var width = 800,
-        height = width / 1.7;
+    var width = $map.width() - margin.left - margin.right;
+    var height = Math.ceil((width * map_aspect_height) / map_aspect_width) - margin.top - margin.bottom;
+
+    $map.empty();
 
     var svg = d3.select("#map").append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -68,6 +75,8 @@ function plainmap() {
             return formatter(d);
         });
 
+
+
     var projection = d3.geo.albersUsa()
         .scale(width * 1.2)
         .translate([width / 2, height / 2]);
@@ -78,43 +87,53 @@ function plainmap() {
     var pathst = d3.geo.path()
         .projection(projection);
 
-    queue()
-        .defer(d3.json, json_url)
-        .defer(d3.csv, data_url)
-        .defer(d3.csv, names_url)
-        .await(ready);
+    svg.append("g")
+        .attr("class", "counties")
+        .selectAll("path")
+        .data(topojson.feature(us, us.objects.counties).features)
+        .enter().append("path")
+        .attr("d", path)
+        .style("fill", function (d) {
+            return color(value[d.id]);
+        })
+        .call(d3.helper.tooltip(
+            function (d, i) {
+                return countyname[d.id] + "</br>" + formatter(value[d.id]);
+            }
+        ));;
 
-    function ready(error, us, data, names) {
-        var value = {};
-        var countyname = {};
-        data.forEach(function (d) {
-            value[d.id] = +d.PctPoorinPoorSchools;
-        });
-        names.forEach(function (d) {
-            countyname[d.id] = d.name;
-        });
+    svg.append("g")
+        .attr("class", "states")
+        .selectAll("pathst")
+        .data(topojson.feature(us, us.objects.states).features)
+        .enter().append("path")
+        .attr("d", pathst);
+    //.style("fill", function (d) {
+    //    return color(value[d.id]);
+    //});
 
-        svg.append("g")
-            .attr("class", "counties")
-            .selectAll("path")
-            .data(topojson.feature(us, us.objects.counties).features)
-            .enter().append("path")
-            .attr("d", path)
-            .style("fill", function (d) {
-                return color(value[d.id]);
-            })
-            .call(d3.helper.tooltip(
-                function (d, i) {
-                    return countyname[d.id] + "</br>" + formatter(value[d.id]);
-                }
-            ));;
-
-        svg.append("g")
-            .attr("class", "states")
-            .selectAll("pathst")
-            .data(topojson.feature(us, us.objects.states).features)
-            .enter().append("path")
-            .attr("d", pathst);
-    }
 }
-plainmap();
+
+$(window).load(function () {
+    if (Modernizr.svg) { // if svg is supported, draw dynamic chart
+
+        d3.json(json_url, function (json) {
+            d3.csv(data_url, function (data) {
+                d3.csv(names_url, function (names) {
+                    us = json;
+
+                    data.forEach(function (d) {
+                        value[d.id] = +d.PctPoorinPoorSchools;
+                    });
+                    names.forEach(function (d) {
+                        countyname[d.id] = d.name;
+                    });
+
+                    plainmap();
+                    window.onresize = plainmap;
+                })
+            })
+        });
+
+    };
+});

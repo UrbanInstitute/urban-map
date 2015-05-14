@@ -16,6 +16,13 @@ body {
     stroke: none;
 }
 
+path:hover {
+    stroke: #fcb918;
+    opacity: 1;
+    stroke-width: 3px;
+    cursor: pointer;
+}
+
 .states {
     fill: none;
     stroke: #fff;
@@ -35,8 +42,9 @@ h2 {
 
 .urban-map-tooltip {
     padding: 10px;
-    background-color: white;
+    background-color: #fff;
     color: #333;
+    opacity: 0.85;
     border: 1px solid #aaa;
     pointer-events: none;
 }
@@ -46,15 +54,6 @@ h2 {
     opacity: 1;
     stroke-width: 3px;
     cursor: pointer;
-}
-
-.urban-map-states {
-    stroke: white;
-    stroke-linejoin: round;
-}
-
-.urban-map-legend {
-    display: none;
 }
 
 #legend,

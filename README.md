@@ -1,12 +1,11 @@
 #Urban Institute reusable map template - WIP
-d3 template for county and state level maps using Urban's style
+d3 template for county and state level maps using Urban's style, fully responsive and IE compatible
 * Building on Ben's version
 * Responsive using [pym.js](https://github.com/nprapps/pym.js)
 * Use Urban's [datatools embed](https://github.com/UrbanInstitute/datatools-embed) for wrapper
 
-##Features to add
+##Features needed
 * Title
-* Tooltips - move to be where the pointer points (top left of poiner)
 * Legend
 * Predefined color ramps
 * Source info
@@ -16,5 +15,7 @@ d3 template for county and state level maps using Urban's style
 
 ##To do
 * pym it
+* Make legend position responsive
+* Tooltips - move to be where the pointer points (top left of poiner), style
 * Stop state paths from hover highlighting
 * Set no color for missing data (allow choice or bake in?)

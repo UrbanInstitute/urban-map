@@ -15,7 +15,7 @@ var map_aspect_height = 1;
 var value = {};
 var countyname = {};
 
-function plainmap() {
+function urbanmap() {
 
     var margin = {
         top: 30,
@@ -75,8 +75,6 @@ function plainmap() {
             return formatter(d);
         });
 
-
-
     var projection = d3.geo.albersUsa()
         .scale(width * 1.2)
         .translate([width / 2, height / 2]);
@@ -108,10 +106,6 @@ function plainmap() {
         .data(topojson.feature(us, us.objects.states).features)
         .enter().append("path")
         .attr("d", pathst);
-    //.style("fill", function (d) {
-    //    return color(value[d.id]);
-    //});
-
 }
 
 $(window).load(function () {
@@ -129,8 +123,8 @@ $(window).load(function () {
                         countyname[d.id] = d.name;
                     });
 
-                    plainmap();
-                    window.onresize = plainmap;
+                    urbanmap();
+                    window.onresize = urbanmap;
                 })
             })
         });

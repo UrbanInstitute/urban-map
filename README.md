@@ -17,7 +17,7 @@ d3 template for county and state level maps using Urban's style, fully responsiv
 * Since we'll ~always want county names - add to topojson
 * Color palettes - add more, update
 * Make legend position responsive - separate svg
-* Tooltips - move to be where the pointer points (top left of poiner), style, adjust based on svg position so it switches sides if needed
+* Tooltips - move to be where the pointer points (top left of pointer), style, adjust based on svg position so it switches sides if needed, make a function for tooltip text
 * Set color for missing data (allow choice or bake in?)
 * pym it, datatools wrapper it
 * 2.0: allow single state mapping: separate jsons & aspect ratios needed for each state
@@ -25,6 +25,7 @@ d3 template for county and state level maps using Urban's style, fully responsiv
 ##Things for the user to define
 * data_url
 * valuetomap
+* countyid
 * colors (predefined or custom)
 * breaks
 * legend_breaks, legend_left

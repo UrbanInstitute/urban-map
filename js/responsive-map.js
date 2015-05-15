@@ -8,13 +8,14 @@ var data_url = "data/schoolpoverty.csv",
     legend_breaks = [0.2, 0.4, 0.6, 0.8, 1.0],
     legend_left = 0,
     formatter = d3.format("%"),
-    valuetomap = "PctPoorinPoorSchools";
+    valuetomap = "PctPoorinPoorSchools",
+    countyid = "id";
 
-var map_aspect_width = 1.7;
-var map_aspect_height = 1;
+var map_aspect_width = 1.7,
+    map_aspect_height = 1;
 
-var value = {};
-var countyname = {};
+var value = {},
+    countyname = {};
 
 function urbanmap() {
 
@@ -90,11 +91,11 @@ function urbanmap() {
         .enter().append("path")
         .attr("d", path)
         .style("fill", function (d) {
-            return color(value[d.id]);
+            return color(value[d[countyid]]);
         })
         .call(d3.helper.tooltip(
             function (d, i) {
-                return countyname[d.id] + "</br>" + formatter(value[d.id]);
+                return countyname[d[countyid]] + "</br>" + formatter(value[d.id]);
             }
         ));;
 
@@ -115,10 +116,10 @@ $(window).load(function () {
                     us = json;
 
                     data.forEach(function (d) {
-                        value[d.id] = +d[valuetomap];
+                        value[d[countyid]] = +d[valuetomap];
                     });
                     names.forEach(function (d) {
-                        countyname[d.id] = d.name;
+                        countyname[d[countyid]] = d.name;
                     });
 
                     urbanmap();

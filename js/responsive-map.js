@@ -1,13 +1,14 @@
 var $map = $('#map');
 var us;
-var data_url = "data/schoolpoverty.csv";
-var json_url = "data/us.json";
-var names_url = "data/countynames.csv";
-var colors = ["#b0d5f1", "#82c4e9", "#0096d2", "#00578b", "#000"];
-var breaks = [0.2, 0.4, 0.6, 0.8];
-var legend_breaks = [0.2, 0.4, 0.6, 0.8, 1.0];
-var legend_left = 0;
-var formatter = d3.format("%");
+var data_url = "data/schoolpoverty.csv",
+    json_url = "data/us.json",
+    names_url = "data/countynames.csv",
+    colors = palette.blue5,
+    breaks = [0.2, 0.4, 0.6, 0.8],
+    legend_breaks = [0.2, 0.4, 0.6, 0.8, 1.0],
+    legend_left = 0,
+    formatter = d3.format("%"),
+    valuetomap = "PctPoorinPoorSchools";
 
 var map_aspect_width = 1.7;
 var map_aspect_height = 1;
@@ -82,9 +83,6 @@ function urbanmap() {
     var path = d3.geo.path()
         .projection(projection);
 
-    var pathst = d3.geo.path()
-        .projection(projection);
-
     svg.append("g")
         .attr("class", "counties")
         .selectAll("path")
@@ -102,10 +100,10 @@ function urbanmap() {
 
     svg.append("g")
         .attr("class", "states")
-        .selectAll("pathst")
+        .selectAll("path")
         .data(topojson.feature(us, us.objects.states).features)
         .enter().append("path")
-        .attr("d", pathst);
+        .attr("d", path);
 }
 
 $(window).load(function () {
@@ -117,7 +115,7 @@ $(window).load(function () {
                     us = json;
 
                     data.forEach(function (d) {
-                        value[d.id] = +d.PctPoorinPoorSchools;
+                        value[d.id] = +d[valuetomap];
                     });
                     names.forEach(function (d) {
                         countyname[d.id] = d.name;

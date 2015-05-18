@@ -1,23 +1,28 @@
+//defaults, and declare vars that will always need to be specified by user
 var $map = $('#map');
-var us;
-var data_url = "data/schoolpoverty.csv",
+var us,
+    map_aspect_width = 1.7,
+    map_aspect_height = 1,
     json_url = "data/us-named.json",
     colors = palette.blue5,
     breaks = [0.2, 0.4, 0.6, 0.8],
     legend_breaks = [0.2, 0.4, 0.6, 0.8, 1.0],
-    //colors = palette.blue3,
-    //breaks = [0.333,0.666],
-    //legend_breaks = [0.333,0.666,1],
     legend_left = 0,
     formatter = d3.format("%"),
+    missingcolor = "#ccc",
+    value = {},
+    data_url,
+    valuetomap,
+    countyid;
+
+//user defined, or override
+data_url = "data/schoolpoverty.csv",
     valuetomap = "PctPoorinPoorSchools",
-    countyid = "fips";
-
-var map_aspect_width = 1.7,
-    map_aspect_height = 1;
-
-var value = {},
-    countyname = {};
+    countyid = "fips",
+    missingcolor = "#ea0e41";
+    //colors = palette.blue3,
+    //breaks = [0.333, 0.666],
+    //legend_breaks = [0.333, 0.666, 1];
 
 function urbanmap() {
 
@@ -92,11 +97,19 @@ function urbanmap() {
         .attr("class", "counties")
         .attr("d", path)
         .style("fill", function (d) {
-            return color(value[d.id]);
+            if (value[d.id] != null) {
+                return color(value[d.id]);
+            } else {
+                return missingcolor;
+            }
         })
         .call(d3.helper.tooltip(
             function (d, i) {
-                return d.properties.name + "</br>" + formatter(value[d.id]);
+                if (value[d.id] == null) {
+                    return "<b>" + d.properties.name + "</b></br> No data";
+                } else {
+                    return "<b>" + d.properties.name + "</b></br>" + formatter(value[d.id]);
+                }
             }
         ));
 
@@ -115,7 +128,11 @@ $(window).load(function () {
                 us = json;
 
                 data.forEach(function (d) {
-                    value[d[countyid]] = +d[valuetomap];
+                    if (d[valuetomap] == "") {
+                        value[d[countyid]] = null;
+                    } else {
+                        value[d[countyid]] = +d[valuetomap];
+                    }
                 });
 
                 urbanmap();

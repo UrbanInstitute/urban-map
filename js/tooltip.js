@@ -10,7 +10,7 @@ d3.helper.tooltip = function (accessor) {
                 // Append tooltip
                 tooltipDiv = d3.select('body').append('div').attr('class', 'urban-map-tooltip');
                 var absoluteMousePos = d3.mouse(bodyNode);
-                tooltipDiv.style('left', (absoluteMousePos[0] + 20) + 'px')
+                tooltipDiv.style('left', (absoluteMousePos[0] - 150) + 'px')
                     .style('top', (absoluteMousePos[1] - 45) + 'px')
                     .style('position', 'absolute')
                     .style('z-index', 1001);
@@ -20,7 +20,7 @@ d3.helper.tooltip = function (accessor) {
             .on('mousemove', function (d, i) {
                 // Move tooltip
                 var absoluteMousePos = d3.mouse(bodyNode);
-                tooltipDiv.style('left', (absoluteMousePos[0] + 20) + 'px')
+                tooltipDiv.style('left', (absoluteMousePos[0] - 150) + 'px')
                     .style('top', (absoluteMousePos[1] - 45) + 'px');
                 var tooltipText = accessor(d, i) || '';
                 tooltipDiv.html(tooltipText);

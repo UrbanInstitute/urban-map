@@ -30,11 +30,11 @@ d3 template for county and state level maps using Urban's style, fully responsiv
  * valuetomap
  * countyid (column in their data w/ fips code)
 * Can go with the defaults or overwrite:
- * colors (default: palette.blue5)
- * breaks, legend_breaks, legend_left (default: 0-100% by 20%
+ * colors (default: palette.blue5, missing = #ccc)
+ * breaks, legend_breaks, legend_left (default: 0-100% by 20%)
  * formatter for numbers (default: %)
- * tooltip text (County | % )
- * N/A text (County | No data)
+ * tooltip text (default: County | % )
+ * N/A text (default: County | No data)
 * For page:
  * title
  * source note

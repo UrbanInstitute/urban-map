@@ -37,8 +37,8 @@ d3 template for county and state level maps using Urban's style, fully responsiv
  * source note
  * embed button - optional
 
-#Example: body of the child index, using all defaults except color for missing data:
-
+#Example: body of the child index, using all defaults except color of missing data:
+From [map2.html](/map2.html)
 ```html
 <body>
 

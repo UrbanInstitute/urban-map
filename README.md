@@ -14,7 +14,6 @@ d3 template for county and state level maps using Urban's style, fully responsiv
 * A feature that would be good to have is a "redacted" or "ignored flag" --> basically a way of saying "if Column X in the csv meets some condition, add a class to the path and grey it out, plus allow for a custom tooltip"
 
 ##To do
-* Since we'll ~always want county names - add to topojson
 * Color palettes - add more, update
 * Make legend position responsive - separate svg
 * Tooltips - move to be where the pointer points (top left of pointer), style, adjust based on svg position so it switches sides if needed, make a function for tooltip text
@@ -25,11 +24,11 @@ d3 template for county and state level maps using Urban's style, fully responsiv
 ##Things for the user to define
 * data_url
 * valuetomap
-* countyid
-* colors (predefined or custom)
+* countyid (column in their data w/ fips code)
+* colors (predefined - e.g. palette.blue5 or custom)
 * breaks
 * legend_breaks, legend_left
-* formatter
+* formatter for numbers (usually %)
 * tooltip text
  * N/A text
 * For page:

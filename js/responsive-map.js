@@ -1,15 +1,17 @@
 var $map = $('#map');
 var us;
 var data_url = "data/schoolpoverty.csv",
-    json_url = "data/us.json",
-    names_url = "data/countynames.csv",
+    json_url = "data/us-named.json",
     colors = palette.blue5,
     breaks = [0.2, 0.4, 0.6, 0.8],
     legend_breaks = [0.2, 0.4, 0.6, 0.8, 1.0],
+    //colors = palette.blue3,
+    //breaks = [0.333,0.666],
+    //legend_breaks = [0.333,0.666,1],
     legend_left = 0,
     formatter = d3.format("%"),
     valuetomap = "PctPoorinPoorSchools",
-    countyid = "id";
+    countyid = "fips";
 
 var map_aspect_width = 1.7,
     map_aspect_height = 1;
@@ -84,20 +86,19 @@ function urbanmap() {
     var path = d3.geo.path()
         .projection(projection);
 
-    svg.append("g")
-        .attr("class", "counties")
-        .selectAll("path")
+    svg.selectAll("path")
         .data(topojson.feature(us, us.objects.counties).features)
         .enter().append("path")
+        .attr("class", "counties")
         .attr("d", path)
         .style("fill", function (d) {
-            return color(value[d[countyid]]);
+            return color(value[d.id]);
         })
         .call(d3.helper.tooltip(
             function (d, i) {
-                return countyname[d[countyid]] + "</br>" + formatter(value[d.id]);
+                return d.properties.name + "</br>" + formatter(value[d.id]);
             }
-        ));;
+        ));
 
     svg.append("g")
         .attr("class", "states")
@@ -108,25 +109,18 @@ function urbanmap() {
 }
 
 $(window).load(function () {
-    if (Modernizr.svg) { // if svg is supported, draw dynamic chart
-
+    if (Modernizr.svg) {
         d3.json(json_url, function (json) {
             d3.csv(data_url, function (data) {
-                d3.csv(names_url, function (names) {
-                    us = json;
+                us = json;
 
-                    data.forEach(function (d) {
-                        value[d[countyid]] = +d[valuetomap];
-                    });
-                    names.forEach(function (d) {
-                        countyname[d[countyid]] = d.name;
-                    });
+                data.forEach(function (d) {
+                    value[d[countyid]] = +d[valuetomap];
+                });
 
-                    urbanmap();
-                    window.onresize = urbanmap;
-                })
+                urbanmap();
+                window.onresize = urbanmap;
             })
         });
-
     };
 });

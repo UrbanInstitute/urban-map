@@ -13,18 +13,13 @@ var us,
     value = {},
     data_url,
     valuetomap,
-    countyid;
+    countyid,
+    pymchild = null;
 
-//user defined, or override
-data_url = "data/schoolpoverty.csv",
-    valuetomap = "PctPoorinPoorSchools",
-    countyid = "fips",
-    missingcolor = "#ea0e41";
-    //colors = palette.blue3,
-    //breaks = [0.333, 0.666],
-    //legend_breaks = [0.333, 0.666, 1];
-
-function urbanmap() {
+function urbanmap(container_width) {
+    if (container_width == undefined || isNaN(container_width)) {
+        container_width = 900;
+    }
 
     var margin = {
         top: 30,
@@ -33,7 +28,7 @@ function urbanmap() {
         left: 10
     };
 
-    var width = $map.width() - margin.left - margin.right;
+    var width = container_width - margin.left - margin.right;
     var height = Math.ceil((width * map_aspect_height) / map_aspect_width) - margin.top - margin.bottom;
 
     $map.empty();
@@ -119,6 +114,11 @@ function urbanmap() {
         .data(topojson.feature(us, us.objects.states).features)
         .enter().append("path")
         .attr("d", path);
+
+    // This is calling an updated height.
+    if (pymChild) {
+        pymChild.sendHeight();
+    }
 }
 
 $(window).load(function () {
@@ -128,6 +128,9 @@ $(window).load(function () {
                 us = json;
 
                 data.forEach(function (d) {
+                    //need to accommodate string fips, like in school poverty data (leading 0s)
+                    d[countyid] = +d[countyid];
+                    //missing data! deal with it!
                     if (d[valuetomap] == "") {
                         value[d[countyid]] = null;
                     } else {
@@ -135,9 +138,13 @@ $(window).load(function () {
                     }
                 });
 
-                urbanmap();
-                window.onresize = urbanmap;
+                // This is instantiating the child message with a callback but AFTER the D3 charts are drawn.
+                pymChild = new pym.Child({
+                    renderCallback: urbanmap
+                });
             })
         });
-    };
+    } else { // If not, rely on static fallback image. No callback needed.
+        pymChild = new pym.Child({});
+    }
 });

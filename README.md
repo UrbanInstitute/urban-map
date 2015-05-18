@@ -4,25 +4,22 @@ d3 template for county and state level maps using Urban's style, fully responsiv
 * Responsive using [pym.js](https://github.com/nprapps/pym.js)
 * Use Urban's [datatools embed](https://github.com/UrbanInstitute/datatools-embed) for wrapper
 
-##Features needed
-* Title
-* Legend
-* Predefined color ramps
-* Source info
-* (Eventually) optional embed button
+##Features to add
+* Optional embed button
 * Roll over legend to highlight bin in map
 * A feature that would be good to have is a "redacted" or "ignored flag" --> basically a way of saying "if Column X in the csv meets some condition, add a class to the path and grey it out, plus allow for a custom tooltip"
 
 ##To do
-* Color palettes - add more, update
-* Make legend position responsive - separate svg
+* Southeastern Alaska issue - make sure json & names have latest counties
+* Make legend separate svg
 * Tooltips:
  * Move to be where the pointer points (top left of pointer)
  * Adjust based on svg position so it switches sides if needed
  * Make a function for user to enter tooltip text
-* pym it, datatools wrapper it
+* datatools wrapper it
+* Color palettes - add more, update
+* CSS for source notes, embed buttons
 * 2.0: allow single state mapping: separate jsons & aspect ratios needed for each state
-* Southeastern Alaska issue - make sure json & names have latest counties
 
 ##Things for the user to define
 * Necessary:
@@ -39,3 +36,33 @@ d3 template for county and state level maps using Urban's style, fully responsiv
  * title
  * source note
  * embed button - optional
+
+#Example: body of the child index, using all defaults except color for missing data:
+
+```html
+<body>
+
+    <h2>Map #2 with custom missing color</h2>
+    <div id="map"></div>
+    <div class="footnote">Source: Urban Institute, 2015</div>
+
+    <script src="lib/jquery.js"></script>
+    <script src="lib/modernizr.svg.min.js"></script>
+    <script src="lib/d3.v3.min.js"></script>
+    <script src="lib/topojson.v1.min.js"></script>
+    <script src="lib/pym.min.js"></script>
+    <script src="js/tooltip.js"></script>
+    <script src="js/colorpalettes.js"></script>
+    <script src="js/responsive-map.js"></script>
+
+    <script>
+        data_url = "data/test.csv",
+            valuetomap = "PctPoorinPoorSchools",
+            countyid = "fips",
+            missingcolor = "#b12a6d";
+
+        var pymChild = new pym.Child();
+    </script>
+
+</body>
+```

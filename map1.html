@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="css/maps.css">
+</head>
+
+<body>
+
+    <h2>Map #1</h2>
+    <div id="map"></div>
+    <div class="footnote">Source: Urban Institute</div>
+
+    <script src="lib/jquery.js"></script>
+    <script src="lib/d3.v3.min.js"></script>
+    <script src="lib/modernizr.svg.min.js"></script>
+    <script src="lib/topojson.v1.min.js"></script>
+    <script src="lib/pym.min.js"></script>
+    <script src="js/tooltip.js"></script>
+    <script src="js/colorpalettes.js"></script>
+    <script src="js/responsive-map.js"></script>
+
+    <script>
+        data_url = "data/test.csv",
+            valuetomap = "PctPoorinPoorSchools",
+            countyid = "fips";
+        //colors = palette.blue3,
+        //breaks = [0.333, 0.666],
+        //legend_breaks = [0.333, 0.666, 1];
+
+        var pymChild = new pym.Child();
+    </script>
+
+
+</body>
+
+</html>

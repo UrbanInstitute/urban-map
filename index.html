@@ -1,21 +1,42 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="css/old-maps.css">
+<html>
+
+<head>
+    <title>Urban Maps Embed</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <style>
+        @import url("http://fonts.googleapis.com/css?family=Lato");
+        body {
+            font-family: 'Lato', sans-serif;
+            color: #333;
+        }
+        
+        .map {
+            width: 100%;
+            height: 100%;
+            margin-bottom: 30px;
+            max-width: 1000px;
+        }
+    </style>
+</head>
 
 <body>
+    <h1>This is a page with some maps in it</h1>
 
-    <h2>Responsive Map - not yet pym.js'd</h2>
-    <div id="map"></div>
+    <p>gjksfgdfjsgljdflkgjfdlkgjsldfkgk kgjdlfkjgldsf</p>
+    <div id="map1" class="map"></div>
+    <p>paragraph of texttttt</p>
+    <div id="map2" class="map"></div>
+    <p>paragraph of texttttt</p>
 
-
-    <script src="lib/jquery.js"></script>
-    <script src="lib/modernizr.svg.min.js"></script>
-    <script src="lib/d3.v3.min.js"></script>
-    <script src="lib/topojson.v1.min.js"></script>
-    <script src="js/tooltip.js"></script>
-    <script src="js/colorpalettes.js"></script>
-    <script src="js/responsive-map.js"></script>
-
+    <script type="text/javascript" src="lib/pym.min.js"></script>
+    <script>
+        var pymParent = new pym.Parent('map1', 'map1.html', {});
+    </script>
+    <script>
+        var second = new pym.Parent('map2', 'map2.html', {});
+    </script>
 </body>
 
 </html>

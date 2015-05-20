@@ -46,10 +46,10 @@ From [map2.html](/map2.html)
  * colors - predefined palettes or enter an array (default: palette.blue5)
  * missingcolor (default: #ccc)
  * Breaks for bins/legend: (default: 0-100% by 20%)
-   * breaks - array excluding min and max
-   * legend_breaks - array excluding min
-   * legend_left - min to appear in legend
-   * Default: breaks = [0.2, 0.4, 0.6, 0.8], legend_breaks = [0.2, 0.4, 0.6, 0.8, 1.0], legend_left = 0,
+    * Default: breaks = [0.2, 0.4, 0.6, 0.8], legend_breaks = [0.2, 0.4, 0.6, 0.8, 1.0], legend_left = 0
+ * breaks - array excluding min and max
+ * legend_breaks - array excluding min
+ * legend_left - min to appear in legend
  * formatter (default: d3.format("%"))
  * tooltip text (default: County | XX% )
  * N/A text (default: County | No data)

@@ -176,7 +176,7 @@ function urbanmap(container_width) {
         .call(d3.helper.tooltip(
             function (d, i) {
                 if (value[d.id] == null) {
-                    return d.id +"<b>" + d.properties.name + "</b></br> No data";
+                    return "<b>" + d.properties.name + "</b></br> No data";
                 } else {
                     return "<b>" + d.properties.name + "</b></br>" + formatter(value[d.id]);
                 }

@@ -43,10 +43,14 @@ From [map2.html](/map2.html)
  * valuetomap from dataset
  * countyid from dataset
 * Can go with the defaults or overwrite:
- * colors (default: palette.blue5)
+ * colors - predefined palettes or enter an array (default: palette.blue5)
  * missingcolor (default: #ccc)
- * breaks, legend_breaks, legend_left (default: 0-100% by 20%)
- * formatter (default: %)
+ * Breaks for bins/legend: (default: 0-100% by 20%)
+  * breaks - array excluding min and max
+  * legend_breaks - array excluding min
+  * legend_left - min to appear in legend
+  * Default: breaks = [0.2, 0.4, 0.6, 0.8], legend_breaks = [0.2, 0.4, 0.6, 0.8, 1.0], legend_left = 0,
+ * formatter (default: d3.format("%"))
  * tooltip text (default: County | XX% )
  * N/A text (default: County | No data)
 * For page:

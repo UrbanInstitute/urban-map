@@ -12,6 +12,7 @@ From [map2.html](/map2.html)
 <body>
 
     <h2>Map #2 with custom missing color</h2>
+    <div id="legend"></div>
     <div id="map"></div>
     <div class="footnote">Source: Urban Institute, 2015</div>
 
@@ -42,9 +43,10 @@ From [map2.html](/map2.html)
  * valuetomap from dataset
  * countyid from dataset
 * Can go with the defaults or overwrite:
- * colors (default: palette.blue5, missing = #ccc)
+ * colors (default: palette.blue5)
+ * missingcolor (default: #ccc)
  * breaks, legend_breaks, legend_left (default: 0-100% by 20%)
- * formatter for numbers (default: %)
+ * formatter (default: %)
  * tooltip text (default: County | XX% )
  * N/A text (default: County | No data)
 * For page:

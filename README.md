@@ -68,7 +68,6 @@ From [map2.html](/map2.html)
 * Southeastern Alaska issue - make sure json & names have latest counties
 * Tooltips:
  * Move to be where the pointer points (top left of pointer)
- * Adjust based on svg position so it switches sides if needed
  * Make a function for user to enter tooltip text
 * datatools wrapper it
 * Color palettes - add more, update

@@ -49,7 +49,7 @@ var $map = $('#map');
 var $legend = $('#legend');
 var us,
     mobile_threshold = 600,
-    map_aspect_width = 1.8,
+    map_aspect_width = 1.7,
     map_aspect_height = 1,
     json_url = "data/us-named.json",
     colors = palette.blue5,
@@ -155,7 +155,7 @@ function urbanmap(container_width) {
         .text(formatter(legend_left));
 
     var projection = d3.geo.albersUsa()
-        .scale(width * 1.2)
+        .scale(width * 1.25)
         .translate([width / 2, height / 2]);
 
     var path = d3.geo.path()
@@ -176,7 +176,7 @@ function urbanmap(container_width) {
         .call(d3.helper.tooltip(
             function (d, i) {
                 if (value[d.id] == null) {
-                    return "<b>" + d.properties.name + "</b></br> No data";
+                    return d.id +"<b>" + d.properties.name + "</b></br> No data";
                 } else {
                     return "<b>" + d.properties.name + "</b></br>" + formatter(value[d.id]);
                 }

@@ -43,6 +43,7 @@ From [map2.html](/map2.html)
  * valuetomap from dataset
  * countyid from dataset
 * Can go with the defaults or overwrite:
+ * nullcondition - could be *, a value, etc (default: "")
  * colors - predefined palettes or enter an array (default: palette.blue5)
  * missingcolor (default: #ccc)
  * Breaks for bins/legend: (default: 0-100% by 20%)

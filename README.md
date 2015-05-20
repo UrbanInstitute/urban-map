@@ -61,7 +61,6 @@ From [map2.html](/map2.html)
 ##To do
 * Southeastern Alaska issue - make sure json & names have latest counties
 * Source notes not appearing in parent??
-* Make legend separate svg
 * Tooltips:
  * Move to be where the pointer points (top left of pointer)
  * Adjust based on svg position so it switches sides if needed

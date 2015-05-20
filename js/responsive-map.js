@@ -1,7 +1,9 @@
 //defaults, and declare vars that will always need to be specified by user
 var $map = $('#map');
+var $legend = $('#legend');
 var us,
-    map_aspect_width = 1.7,
+    mobile_threshold = 600,
+    map_aspect_width = 1.8,
     map_aspect_height = 1,
     json_url = "data/us-named.json",
     colors = palette.blue5,
@@ -18,11 +20,11 @@ var us,
 
 function urbanmap(container_width) {
     if (container_width == undefined || isNaN(container_width)) {
-        container_width = 900;
+        container_width = 1300;
     }
 
     var margin = {
-        top: 30,
+        top: 2,
         right: 10,
         bottom: 10,
         left: 10
@@ -32,6 +34,8 @@ function urbanmap(container_width) {
     var height = Math.ceil((width * map_aspect_height) / map_aspect_width) - margin.top - margin.bottom;
 
     $map.empty();
+
+    $legend.empty();
 
     var svg = d3.select("#map").append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -43,19 +47,38 @@ function urbanmap(container_width) {
         .domain(breaks)
         .range(colors);
 
-    var legend = svg.selectAll("g.legend")
+    var marginl = {
+        top: 5,
+        right: 10,
+        bottom: 2,
+        left: 10
+    };
+
+    if (container_width < mobile_threshold) {
+        marginl.bottom = 55;
+    } else {
+        marginl.bottom = 5;
+    }
+
+    var lsvg = d3.select("#legend").append("svg")
+        .attr("width", width + marginl.left + marginl.right)
+        .attr("height", 50 + marginl.top + marginl.bottom)
+        .append("g")
+        .attr("transform", "translate(" + marginl.left + "," + marginl.top + ")");
+
+    if ($legend.width() < mobile_threshold) {
+        var lp_w = 10,
+            ls_w = 40,
+            ls_h = 18;
+    } else {
+        var lp_w = (3 * width / 5),
+            ls_w = 40,
+            ls_h = 18;
+    }
+
+    var legend = lsvg.selectAll("g.legend")
         .data(legend_breaks)
         .enter().append("g")
-        .attr("class", "legend");
-
-    var lp_w = 3 * width / 5,
-        ls_w = 40,
-        ls_h = 18;
-
-    svg.append("text")
-        .text(formatter(legend_left))
-        .attr("x", lp_w - 5)
-        .attr("y", 15)
         .attr("class", "legend");
 
     legend.append("rect")
@@ -78,6 +101,11 @@ function urbanmap(container_width) {
         .text(function (d, i) {
             return formatter(d);
         });
+
+    legend.append("text")
+        .attr("x", lp_w - 5)
+        .attr("y", 15)
+        .text(formatter(legend_left));
 
     var projection = d3.geo.albersUsa()
         .scale(width * 1.2)

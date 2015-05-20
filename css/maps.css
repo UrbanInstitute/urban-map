@@ -1,7 +1,7 @@
 @import url("http://fonts.googleapis.com/css?family=Lato");
 body {
     font-family: 'Lato', sans-serif;
-    color: #333;
+    color: #000;
 }
 
 h2 {
@@ -16,7 +16,6 @@ h2 {
 #map {
     display: block;
     width: 100%;
-    margin: 0px auto;
 }
 
 .counties {
@@ -59,25 +58,11 @@ path:hover {
     margin-right: auto;
     display: table;
     font-size: 12px;
-    margin-bottom: -20px;
+    font-weight: 400;
+    margin-bottom: -50px;
 }
 
 .legend-item {
     float: left;
     margin-right: 2px
-}
-
-.greyed_out {
-    fill: #efefef;
-}
-
-h2 {
-    font-size: 24px;
-    font-weight: 400;
-}
-
-.county-name {
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 0.9em;
 }

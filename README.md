@@ -6,35 +6,48 @@ d3 template for county and state level maps using Urban's style
 * Responsive using [pym.js](https://github.com/nprapps/pym.js)
 * Use Urban's [datatools embed](https://github.com/UrbanInstitute/datatools-embed) for wrapper
 
-###Example use: body of the child index, using all defaults except color of missing data:
-From [map2.html](/map2.html)
+##Usage
+###All defaults
+From [map1.html](/map1.html)
 ```html
 <body>
 
-    <h2>Map #2 with custom missing color</h2>
+   <h2>Map #1 - all defaults</h2>
     <div id="legend"></div>
-    <div id="map"></div>
-    <div class="footnote">Source: Urban Institute, 2015</div>
+    <div id="map"><img src="img/fallback1.png" alt="[Map]" /></div>
+    <div class="footnote"><p>Source: Urban Institute, 2015</p></div>
 
     <script src="lib/jquery.js"></script>
-    <script src="lib/modernizr.svg.min.js"></script>
     <script src="lib/d3.v3.min.js"></script>
+    <script src="lib/modernizr.svg.min.js"></script>
     <script src="lib/topojson.v1.min.js"></script>
     <script src="lib/pym.min.js"></script>
-    <script src="js/tooltip.js"></script>
     <script src="js/colorpalettes.js"></script>
     <script src="js/responsive-map.js"></script>
 
     <script>
-        data_url = "data/test.csv",
-            valuetomap = "PctPoorinPoorSchools",
-            countyid = "fips",
-            missingcolor = "#b12a6d";
-
+        data_url = "data/schoolpoverty.csv",
+            valuetomap = "PercentPoor_NCES",
+            countyid = "fipscounty";
+        
         var pymChild = new pym.Child();
     </script>
 
 </body>
+```
+###Customs
+From [map3.html](/map3.html)
+```javascript
+    data_url = "data/schoolpoverty.csv",
+        valuetomap = "TotalBlack",
+        countyid = "fipscounty",
+        colors = ["#feebe2","#fbb4b9","#f768a1","#ae017e"],
+        missingcolor = "#000",
+        breaks = [200,1000,20000],
+        legend_breaks = [200,1000,20000,125000],
+        formatter = d3.format('.2s');
+
+    var pymChild = new pym.Child();
 ```
 
 ###Things for the user to define

@@ -40,7 +40,6 @@ d3.helper.tooltip = function (accessor) {
             .on("mouseout", function (d, i) {
                 tooltipDiv.remove();
             });
-
     };
 };
 
@@ -128,6 +127,20 @@ function urbanmap(container_width) {
         .enter().append("g")
         .attr("class", "legend");
 
+    lsvg.append("text")
+        .attr("x", lp_w - 5)
+        .attr("y", 15)
+        .text(formatter(legend_left));
+
+    legend.append("text")
+        .attr("x", function (d, i) {
+            return (i * ls_w) + lp_w + ls_w - 15;
+        })
+        .attr("y", 15)
+        .text(function (d, i) {
+            return formatter(d);
+        });
+
     legend.append("rect")
         .attr("x", function (d, i) {
             return (i * ls_w) + lp_w;
@@ -139,20 +152,6 @@ function urbanmap(container_width) {
         .style("fill", function (d, i) {
             return colors[i];
         })
-
-    legend.append("text")
-        .attr("x", function (d, i) {
-            return (i * ls_w) + lp_w + ls_w - 15;
-        })
-        .attr("y", 15)
-        .text(function (d, i) {
-            return formatter(d);
-        });
-
-    legend.append("text")
-        .attr("x", lp_w - 5)
-        .attr("y", 15)
-        .text(formatter(legend_left));
 
     var projection = d3.geo.albersUsa()
         .scale(width * 1.25)
@@ -190,7 +189,6 @@ function urbanmap(container_width) {
         .enter().append("path")
         .attr("d", path);
 
-    // This is calling an updated height.
     if (pymChild) {
         pymChild.sendHeight();
     }
@@ -203,9 +201,7 @@ $(window).load(function () {
                 us = json;
 
                 data.forEach(function (d) {
-                    //need to accommodate string fips, like in school poverty data (leading 0s)
                     d[countyid] = +d[countyid];
-                    //missing data! deal with it!
                     if (d[valuetomap] == nullcondition) {
                         value[d[countyid]] = null;
                     } else {
@@ -213,13 +209,12 @@ $(window).load(function () {
                     }
                 });
 
-                // This is instantiating the child message with a callback but AFTER the D3 charts are drawn.
                 pymChild = new pym.Child({
                     renderCallback: urbanmap
                 });
             })
         });
-    } else { // If not, rely on static fallback image. No callback needed.
+    } else { 
         pymChild = new pym.Child({});
     }
 });

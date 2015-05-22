@@ -10,7 +10,7 @@
 
 <body>
 
-    <h2>Map #3 - counts, custom four-color palette</h2>
+    <h2>Map #3 - counts instead of %, custom four-color palette and missing color</h2>
     <div id="legend"></div>
     <div id="map"><img src="img/fallback2.png" alt="[Map]" /></div>
     <div class="footnote"><p>Source: Urban Institute, 2015</p></div>
@@ -27,7 +27,8 @@
         data_url = "data/schoolpoverty.csv",
             valuetomap = "TotalBlack",
             countyid = "fipscounty",
-            colors = ["#feebe2","#fbb4b9","#f768a1","#ae017e"]
+            colors = ["#feebe2","#fbb4b9","#f768a1","#ae017e"],
+            missingcolor = "#000",
             breaks = [200,1000,20000],
             legend_breaks = [200,1000,20000,125000],
             formatter = d3.format('.2s');

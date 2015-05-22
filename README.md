@@ -8,6 +8,7 @@ d3 template for county and state level maps using Urban's style
 
 ##Usage
 ###All defaults
+![Defaults example](/img/fallback1.png)
 Full body from [map1.html](/map1.html)
 ```html
 <body>
@@ -36,6 +37,7 @@ Full body from [map1.html](/map1.html)
 </body>
 ```
 ###Customs
+![Custom example](/img/fallback3.png)
 Script from [map3.html](/map3.html)
 ```javascript
     data_url = "data/schoolpoverty.csv",

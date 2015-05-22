@@ -5,21 +5,32 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/maps.css">
 </head>
 
 <body>
 
-    <h2>Map #1 - all defaults</h2>
+    <h2>All defaults</h2>
     <div id="legend"></div>
-    <div id="map"><img src="img/fallback1.png" alt="[Map]" /></div>
-    <div class="footnote"><p>Source: Urban Institute, 2015</p></div>
+    <div id="map"><img src="img/fallback1.png" alt="[Map]" />
+    </div>
+    <div class="footnote">
+        <p>Source: Urban Institute, 2015</p>
+    </div>
+
+    <div id="sharer" class="btn-group" role="group" aria-label="...">
+        <button type="button" class="btn sharelink disabled">linketylink.urban.org</button>
+        <a href="http://urban.org/"> <button type="button" class="btn sharebutton">share
+        </button></a>
+    </div>
 
     <script src="lib/jquery.js"></script>
     <script src="lib/d3.v3.min.js"></script>
     <script src="lib/modernizr.svg.min.js"></script>
     <script src="lib/topojson.v1.min.js"></script>
     <script src="lib/pym.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="js/colorpalettes.js"></script>
     <script src="js/responsive-map.js"></script>
 
@@ -27,7 +38,7 @@
         data_url = "data/schoolpoverty.csv",
             valuetomap = "PercentPoor_NCES",
             countyid = "fipscounty";
-        
+
         var pymChild = new pym.Child();
     </script>
 

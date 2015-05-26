@@ -11,7 +11,7 @@ h2 {
 
 .footnote {
     font-size: 12px;
-    padding-bottom: 2em;
+    padding-bottom: 0.5em;
 }
 
 #map {
@@ -70,34 +70,14 @@ path:hover {
     margin-right: 2px
 }
 
-#sharer {
-    text-transform: uppercase;  
-    margin-bottom: 30px;
+.links {
+    margin-bottom: 2em;
 }
-
-.sharelink {
-    color: #000;
-    opacity: 1;
-    background-color: #f8f4ed;
-    text-transform: none;
-    padding: 1em 2em 1em;
-}
-
-.sharebutton {
-    background-color: #1696d2;
-    color: #fff;
-    padding: 1em 2em 1em;
-    text-transform: uppercase;  
-}
-
-.btn-blue {
-  color: #1696d2;
-  background-color: #1696d2;
-  border-color: none;
-}
-
 a {
-    color: #fff;
+    color: #000;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding-right: 40px;
 }
 
 a:link {
@@ -114,4 +94,9 @@ a:hover {
 
 a:active {
     text-decoration: underline;
+}
+.urban{
+    color: #1696d2;
+    float: right;
+    padding-right: 2px;
 }

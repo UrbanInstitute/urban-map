@@ -13,10 +13,18 @@ Full body from [map1.html](/map1.html)
 ```html
 <body>
 
-   <h2>Map #1 - all defaults</h2>
+   <h2>All defaults</h2>
     <div id="legend"></div>
-    <div id="map"><img src="img/fallback1.png" alt="[Map]" /></div>
-    <div class="footnote"><p>Source: Urban Institute, 2015</p></div>
+    <div id="map"><img src="img/fallback1.png" alt="[Map]" />
+    </div>
+    <div class="footnote">
+        <p><b>Source</b>: Urban Institute, 2015</p>
+        <div class="links">
+            <a href="http://urban.org">Embed map</a>
+            <a href="img/fallback1.png" target="_blank">Save map as image</a>
+            <a href="http://urban.org" class="urban"><span style="color:#1696d2">Urban</span> <span style="color:#000">Institute</span></a>
+        </div>
+    </div>
 
     <script src="lib/jquery.js"></script>
     <script src="lib/d3.v3.min.js"></script>
@@ -30,7 +38,7 @@ Full body from [map1.html](/map1.html)
         data_url = "data/schoolpoverty.csv",
             valuetomap = "PercentPoor_NCES",
             countyid = "fipscounty";
-        
+
         var pymChild = new pym.Child();
     </script>
 
@@ -71,14 +79,12 @@ Script from [map3.html](/map3.html)
  * N/A text (default: County | No data)
 * For page:
  * title
- * source note
- * embed button - optional
+ * links (optional)
 
 ###Features to add
-* Optional embed button
 * Roll over legend to highlight bin in map
 * A feature that would be good to have is a "redacted" or "ignored flag" --> basically a way of saying "if Column X in the csv meets some condition, add a class to the path and grey it out, plus allow for a custom tooltip"
-* Do we want a categorical option - different legend style and all? Would we use it?
+
 
 ###To do
 * Tooltips:
@@ -86,8 +92,4 @@ Script from [map3.html](/map3.html)
  * Make a function for user to enter tooltip text
 * datatools wrapper it
 * Color palettes - add more, update
-* CSS for source notes, embed buttons
 * 2.0: allow single state mapping: separate jsons & aspect ratios needed for each state
-
-###Issues
-Southeastern Alaska: remade json using 2014 shapefiles, still have old geographies. SIGH CENSUS BUREAU. [Boundary differences here](http://www.cdc.gov/nchs/data/nvss/bridged_race/County_Geography_Changes.pdf). This will be an issue for researchers using the new county fips. No solution as of yet.

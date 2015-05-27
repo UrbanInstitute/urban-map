@@ -13,16 +13,16 @@ Full body from [map1.html](/map1.html)
 ```html
 <body>
 
-   <h2>All defaults</h2>
+    <h2>All defaults</h2>
     <div id="legend"></div>
     <div id="map"><img src="img/fallback1.png" alt="[Map]" />
     </div>
     <div class="footnote">
         <p><b>Source</b>: Urban Institute, 2015</p>
         <div class="links">
-            <a href="http://urban.org">Embed map</a>
+            <a href="http://www.urban.org" target="_blank">Embed map</a>
             <a href="img/fallback1.png" target="_blank">Save map as image</a>
-            <a href="http://urban.org" class="urban"><span style="color:#1696d2">Urban</span> <span style="color:#000">Institute</span></a>
+            <a href="http://www.urban.org" target="_blank" class="urban"><span style="color:#1696d2">Urban</span> <span style="color:#000">Institute</span></a>
         </div>
     </div>
 

@@ -9,9 +9,45 @@ h2 {
     font-weight: 400;
 }
 
+p {
+    margin-bottom: 0.5ex;
+    font-size: 12px;
+}
 .footnote {
     font-size: 12px;
     padding-bottom: 0.5em;
+}
+
+.links {
+    margin-bottom: 1em;
+    text-transform: uppercase;
+}
+a {
+    color: #000;
+    font-size: 12px;
+    padding-right: 40px;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+:active {
+    text-decoration: underline;
+}
+
+.urban{
+    color: #1696d2;
+    float: right;
+    padding-right: 2px;
 }
 
 #map {
@@ -70,33 +106,3 @@ path:hover {
     margin-right: 2px
 }
 
-.links {
-    margin-bottom: 2em;
-}
-a {
-    color: #000;
-    text-transform: uppercase;
-    font-size: 12px;
-    padding-right: 40px;
-}
-
-a:link {
-    text-decoration: none;
-}
-
-a:visited {
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-a:active {
-    text-decoration: underline;
-}
-.urban{
-    color: #1696d2;
-    float: right;
-    padding-right: 2px;
-}

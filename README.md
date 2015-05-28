@@ -7,44 +7,18 @@ d3 template for county and state level maps using Urban's style
 * Use Urban's [datatools embed](https://github.com/UrbanInstitute/datatools-embed) for wrapper
 
 ##Usage
-###All defaults
+###Child
+* All defaults
 ![Defaults example](/img/fallback1.png)
-Full body from [map1.html](/map1.html)
-```html
-<body>
+Script from [map1.html](/map1.html)
+```javascript
+    data_url = "data/schoolpoverty.csv",
+        valuetomap = "PercentPoor_NCES",
+        countyid = "fipscounty";
 
-    <h2>All defaults</h2>
-    <div id="legend"></div>
-    <div id="map"><img src="img/fallback1.png" alt="[Map]" />
-    </div>
-    <div class="footnote">
-        <p><b>Source</b>: Urban Institute, 2015</p>
-        <div class="links">
-            <a href="http://www.urban.org" target="_blank">Embed map</a>
-            <a href="img/fallback1.png" target="_blank">Save map as image</a>
-            <a href="http://www.urban.org" target="_blank" class="urban"><span style="color:#1696d2">Urban</span> <span style="color:#000">Institute</span></a>
-        </div>
-    </div>
-
-    <script src="lib/jquery.js"></script>
-    <script src="lib/d3.v3.min.js"></script>
-    <script src="lib/modernizr.svg.min.js"></script>
-    <script src="lib/topojson.v1.min.js"></script>
-    <script src="lib/pym.min.js"></script>
-    <script src="js/colorpalettes.js"></script>
-    <script src="js/responsive-map.js"></script>
-
-    <script>
-        data_url = "data/schoolpoverty.csv",
-            valuetomap = "PercentPoor_NCES",
-            countyid = "fipscounty";
-
-        var pymChild = new pym.Child();
-    </script>
-
-</body>
+    var pymChild = new pym.Child();
 ```
-###Customs
+* Customs
 ![Custom example](/img/fallback3.png)
 Script from [map3.html](/map3.html)
 ```javascript
@@ -58,6 +32,33 @@ Script from [map3.html](/map3.html)
         formatter = d3.format('.2s');
 
     var pymChild = new pym.Child();
+```
+###Parent
+See full parent at [index.html](/index.html)
+Set style for div, insert div, call pym and child
+```html
+
+    <style>
+        @import url("http://fonts.googleapis.com/css?family=Lato");
+        body {
+            font-family: 'Lato', sans-serif;
+            color: #000;
+        }
+        
+        .map {
+            width: 100%;
+            height: 100%;
+            margin-bottom: 20px;
+            max-width: 1400px;
+        }
+    </style>
+    
+    <div id="map1" class="map"></div>
+    
+        <script type="text/javascript" src="lib/pym.min.js"></script>
+    <script>
+        var pymParent = new pym.Parent('map1', 'map1.html', {});
+    </script>
 ```
 
 ###Things for the user to define

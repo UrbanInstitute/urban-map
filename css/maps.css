@@ -48,6 +48,7 @@ a:active {
     color: #1696d2;
     float: right;
     padding-right: 2px;
+    text-transform: uppercase;
 }
 
 #map {

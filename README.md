@@ -28,7 +28,7 @@ Script from [map3.html](/map3.html)
         colors = ["#feebe2","#fbb4b9","#f768a1","#ae017e"],
         missingcolor = "#000",
         breaks = [200,1000,20000],
-        legend_breaks = [200,1000,20000,125000],
+        legend_breaks = [0, 200,1000,20000,125000],
         formatter = d3.format('.2s');
 
     var pymChild = new pym.Child();

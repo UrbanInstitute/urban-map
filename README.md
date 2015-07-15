@@ -71,10 +71,9 @@ Set style for div, insert div, call pym and child
  * colors - predefined palettes or enter an array (default: palette.blue5)
  * missingcolor (default: #ccc)
  * Breaks for bins/legend: (default: 0-100% by 20%)
-    * Default: breaks = [0.2, 0.4, 0.6, 0.8], legend_breaks = [0.2, 0.4, 0.6, 0.8, 1.0], legend_left = 0
+    * Default: breaks = [0.2, 0.4, 0.6, 0.8], legend_breaks = [0, 0.2, 0.4, 0.6, 0.8, 1.0]
  * breaks - array excluding min and max
- * legend_breaks - array excluding min
- * legend_left - min to appear in legend
+ * legend_breaks - numbers to display in legend
  * formatter (default: d3.format("%"))
  * tooltip text (default: County | XX% )
  * N/A text (default: County | No data)
@@ -84,13 +83,12 @@ Set style for div, insert div, call pym and child
 
 ###Features to add
 * Roll over legend to highlight bin in map
-* A feature that would be good to have is a "redacted" or "ignored flag" --> basically a way of saying "if Column X in the csv meets some condition, add a class to the path and grey it out, plus allow for a custom tooltip"
-
 
 ###To do
 * Tooltips:
  * Move to be where the pointer points (top left of pointer)
  * Make a function for user to enter tooltip text
+* Embed code
 * datatools wrapper it
 * Color palettes - add more, update
 * 2.0: allow single state mapping: separate jsons & aspect ratios needed for each state

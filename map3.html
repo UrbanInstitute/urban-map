@@ -24,10 +24,10 @@
         </div>
     </div>
 
-    <script src="lib/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script src="lib/modernizr.svg.min.js"></script>
-    <script src="lib/d3.v3.min.js"></script>
-    <script src="lib/topojson.v1.min.js"></script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
     <script src="lib/pym.min.js"></script>
     <script src="js/colorpalettes.js"></script>
     <script src="js/responsive-map.js"></script>
@@ -39,7 +39,7 @@
             colors = ["#feebe2", "#fbb4b9", "#f768a1", "#ae017e"],
             missingcolor = "#000",
             breaks = [200, 1000, 20000],
-            legend_breaks = [200, 1000, 20000, 125000],
+            legend_breaks = [0, 200, 1000, 20000, 125000],
             formatter = d3.format('.2s');
 
         var pymChild = new pym.Child();

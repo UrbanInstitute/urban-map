@@ -1,5 +1,4 @@
 d3.helper = {};
-
 d3.helper.tooltip = function (accessor) {
     return function (selection) {
         var tooltipDiv;
@@ -53,8 +52,7 @@ var us,
     json_url = "data/us-named.json",
     colors = palette.blue5,
     breaks = [0.2, 0.4, 0.6, 0.8],
-    legend_breaks = [0.2, 0.4, 0.6, 0.8, 1.0],
-    legend_left = 0,
+    legend_breaks = [0, 0.2, 0.4, 0.6, 0.8, 1.0],
     formatter = d3.format("%"),
     missingcolor = "#ccc",
     nullcondition = "",
@@ -127,14 +125,10 @@ function urbanmap(container_width) {
         .enter().append("g")
         .attr("class", "legend");
 
-    lsvg.append("text")
-        .attr("x", lp_w - 5)
-        .attr("y", 15)
-        .text(formatter(legend_left));
-
     legend.append("text")
+        .data(legend_breaks)
         .attr("x", function (d, i) {
-            return (i * ls_w) + lp_w + ls_w - 15;
+            return (i * ls_w) + lp_w - 15;
         })
         .attr("y", 15)
         .text(function (d, i) {
@@ -142,6 +136,7 @@ function urbanmap(container_width) {
         });
 
     legend.append("rect")
+        .data(colors)
         .attr("x", function (d, i) {
             return (i * ls_w) + lp_w;
         })
@@ -214,7 +209,7 @@ $(window).load(function () {
                 });
             })
         });
-    } else { 
+    } else {
         pymChild = new pym.Child({});
     }
 });

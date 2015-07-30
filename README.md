@@ -34,9 +34,9 @@ d3 template for county and state level maps using Urban's style
     //additional options if desired
         nullcondition = "somevalue/symbol", //default = ""
         colors = [custom or predefined array], //default = palette.blue5
-        missingcolor = "#xxxxxx", default = #ccc
-        breaks = [array excluding min and max], default = [0.2, 0.4, 0.6, 0.8]
-        legend_breaks = breaks OR [array including min and max], default = [0, 0.2, 0.4, 0.6, 0.8, 1.0]
+        missingcolor = "#xxxxxx", //default = #ccc
+        breaks = [array excluding min and max], //default = [0.2, 0.4, 0.6, 0.8]
+        legend_breaks = breaks OR [array including min and max], //default = [0, 0.2, 0.4, 0.6, 0.8, 1.0]
         formatter =  d3.format("something"); //default =  d3.format("%"), percents rounded to whole number
 
     var pymChild = new pym.Child();
@@ -45,7 +45,9 @@ d3 template for county and state level maps using Urban's style
 ###Examples
 Parent: [index.html](/index.html)
 Children: [defaults-example.html](/defaults-example.html)
+![All defaults map](/img/defaults-fallback.png)
 [customs-example.html](/customs-example.html)
+![All customs map](/img/customs-fallback.png)
 
 ###Features to add
 * Roll over legend to highlight bin in map

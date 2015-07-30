@@ -21,6 +21,14 @@ d3 template for county and state level maps using Urban's style
     var pymChild = new pym.Child();
 ```
 
+###Example
+Parent: [index.html](/index.html)
+
+Children: [defaults-example.html](/defaults-example.html)
+![All defaults map](/img/defaults-fallback.png)
+[customs-example.html](/customs-example.html)
+![All customs map](/img/customs-fallback.png)
+
 ##Usage
 Child - minimum code needed for a default Urban blue percentage map:
 ```html
@@ -40,13 +48,16 @@ Child - minimum code needed for a default Urban blue percentage map:
         <div id="legend"></div>
         <div id="map"><img src="path/to/fallback.png" alt="[Map]" /></div>
 
+        <!--required libs-->
         <script src="lib/jquery.min.js"></script>
         <script src="lib/d3.min.js" charset="utf-8"></script>
         <script src="lib/modernizr.svg.min.js"></script>
         <script src="lib/topojson.v1.min.js"></script>
         <script src="lib/pym.min.js"></script>
+        
         <script src="urbanmap/urbanmap.js"></script>
 
+        <!--make the map-->
         <script>
             data_url = "path/to/data.csv",
                 valuetomap = "colnamenofvalue",
@@ -60,7 +71,7 @@ Child - minimum code needed for a default Urban blue percentage map:
 
     </html>
 ```
-Option footer for links after map in child URL:
+Optional footer for links after map in child URL:
 ```html
         <div class="footnote">
             <p><b>Source</b>: Urban Institute, 2015
@@ -96,11 +107,3 @@ Include in parent:
         var pymParent = new pym.Parent('mapname', 'path/to/map.html', {});
     </script>
 ```
-
-###Examples
-Parent: [index.html](/index.html)
-
-Children: [defaults-example.html](/defaults-example.html)
-![All defaults map](/img/defaults-fallback.png)
-[customs-example.html](/customs-example.html)
-![All customs map](/img/customs-fallback.png)

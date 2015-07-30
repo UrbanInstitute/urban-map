@@ -25,17 +25,21 @@
     <h1>This is a page with some maps in it</h1>
 
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    
+    <!--include your maps-->
     <div id="defaults" class="map"></div>
+    
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
     <div id="customs" class="map"></div>
 
+    <!--include pym and define your map names and URLs-->
     <script type="text/javascript" src="lib/pym.min.js"></script>
     <script>
-        var pymParent = new pym.Parent('defaults', 'defaults-example.html', {});
-    </script>
-    <script>
+        var first = new pym.Parent('defaults', 'defaults-example.html', {});
         var second = new pym.Parent('customs', 'customs-example.html', {});
     </script>
+
 </body>
 
 </html>

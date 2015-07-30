@@ -55,7 +55,7 @@ var us,
     mobile_threshold = 600,
     map_aspect_width = 1.7,
     map_aspect_height = 1,
-    json_url = "data/us-named.json",
+    json_url = "urbanmap/us-named.json",
     colors = palette.blue5,
     breaks = [0.2, 0.4, 0.6, 0.8],
     legend_breaks = [0, 0.2, 0.4, 0.6, 0.8, 1.0],
@@ -126,20 +126,37 @@ function urbanmap(container_width) {
             ls_h = 18;
     }
 
-    var legend = lsvg.selectAll("g.legend")
-        .data(legend_breaks)
-        .enter().append("g")
-        .attr("class", "legend");
+    if (legend_breaks.length > colors.length) {
+        var legend = lsvg.selectAll("g.legend")
+            .data(legend_breaks)
+            .enter().append("g")
+            .attr("class", "legend");
 
-    legend.append("text")
-        .data(legend_breaks)
-        .attr("x", function (d, i) {
-            return (i * ls_w) + lp_w - 15;
-        })
-        .attr("y", 15)
-        .text(function (d, i) {
-            return formatter(d);
-        });
+        legend.append("text")
+            .data(legend_breaks)
+            .attr("x", function (d, i) {
+                return (i * ls_w) + lp_w - 15;
+            })
+            .attr("y", 15)
+            .text(function (d, i) {
+                return formatter(d);
+            });
+    } else {
+        var legend = lsvg.selectAll("g.legend")
+            .data(colors)
+            .enter().append("g")
+            .attr("class", "legend");
+
+        legend.append("text")
+            .data(legend_breaks)
+            .attr("x", function (d, i) {
+                return (i * ls_w) + lp_w + ls_w - 15;
+            })
+            .attr("y", 15)
+            .text(function (d, i) {
+                return formatter(d);
+            });
+    }
 
     legend.append("rect")
         .data(colors)

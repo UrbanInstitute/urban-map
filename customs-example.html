@@ -5,12 +5,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
-    <link rel="stylesheet" type="text/css" href="css/maps.css">
+    <link rel="stylesheet" type="text/css" href="urbanmap/maps.css">
 </head>
 
 <body>
 
-    <h2>Counts instead of %, custom four-color palette and missing color</h2>
+    <h2>Counts instead of %, custom four-color palette and missing color, unlabelled min and max</h2>
     <div id="legend"></div>
     <div id="map"><img src="img/fallback3.png" alt="[Map]" />
     </div>
@@ -29,7 +29,8 @@
     <script src="lib/modernizr.svg.min.js"></script>
     <script src="lib/topojson.v1.min.js"></script>
     <script src="lib/pym.min.js"></script>
-    <script src="js/responsive-map.js"></script>
+    <script src="urbanmap/urbanmap.js"></script>
+
 
     <script>
         data_url = "data/schoolpoverty.csv",
@@ -38,7 +39,7 @@
             colors = ["#feebe2", "#fbb4b9", "#f768a1", "#ae017e"],
             missingcolor = "#000",
             breaks = [200, 1000, 20000],
-            legend_breaks = [0, 200, 1000, 20000, 125000],
+            legend_breaks = breaks,
             formatter = d3.format('.2s');
 
         var pymChild = new pym.Child();

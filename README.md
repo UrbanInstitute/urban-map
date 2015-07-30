@@ -1,6 +1,7 @@
 #Urban Institute reusable county map template
 d3 template for county and state level maps using Urban's style
 * Primary goal: make standard maps with as little work as possible for the blog, website, etc
+* Make map in child.html as a fully responsive [pym](https://github.com/nprapps/pym.js) object, call in parent
 * Nice side effect: coerce good mapmaking decisions by having good defaults and style. [% > count](https://xkcd.com/1138/).
 
 ###Options
@@ -21,7 +22,7 @@ d3 template for county and state level maps using Urban's style
 ```
 
 ##Usage
-* Child - minimum code needed for a default Urban blue percentage map:
+Child - minimum code needed for a default Urban blue percentage map:
 ```html
     <!DOCTYPE html>
     <html>
@@ -71,7 +72,7 @@ Option footer for links after map in child URL:
         </div>
 ```
 
-* Include in parent:
+Include in parent:
 ```html 
     <style>
         @import url("http://fonts.googleapis.com/css?family=Lato");

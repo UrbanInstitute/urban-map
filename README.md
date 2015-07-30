@@ -1,4 +1,4 @@
-#Urban Institute reusable map template - WIP
+#Urban Institute reusable county map template
 d3 template for county and state level maps using Urban's style
 * Primary goal: make standard maps with as little work as possible for the blog, website, etc
 * Nice side effect: coerce good mapmaking decisions by having good defaults and style. [% > count](https://xkcd.com/1138/).
@@ -73,6 +73,21 @@ Option footer for links after map in child URL:
 
 * Include in parent:
 ```html 
+    <style>
+        @import url("http://fonts.googleapis.com/css?family=Lato");
+        body {
+            font-family: 'Lato', sans-serif;
+            color: #000;
+        }
+        
+        .map {
+            width: 100%;
+            height: 100%;
+            margin-bottom: 20px;
+            max-width: 1400px;
+        }
+    </style>
+    
     <div id="mapname" class="map"></div>
     
     <script type="text/javascript" src="lib/pym.min.js"></script>

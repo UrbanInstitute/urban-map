@@ -3,8 +3,25 @@ d3 template for county and state level maps using Urban's style
 * Primary goal: make standard maps with as little work as possible for the blog, website, etc
 * Nice side effect: coerce good mapmaking decisions by having good defaults and style. [% > count](https://xkcd.com/1138/).
 
+###Options
+```javascript
+    //minimum options necessary
+    data_url = "path/to/data.csv",
+        valuetomap = "colnamenofvalue",
+        countyid = "colnameofid",
+    //additional options if desired
+        nullcondition = "somevalue/symbol", //default = ""
+        colors = [custom or predefined array], //default = palette.blue5
+        missingcolor = "#xxxxxx", //default = "#ccc"
+        breaks = [array excluding min and max], //default = [0.2, 0.4, 0.6, 0.8]
+        legend_breaks = breaks OR [array including min and max], //default = [0, 0.2, 0.4, 0.6, 0.8, 1.0]
+        formatter =  d3.format("something"); //default =  d3.format("%"), percents rounded to whole number
+
+    var pymChild = new pym.Child();
+```
+
 ##Usage
-* Minimum code needed:
+* Child - minimum code needed for a default Urban blue percentage map:
 ```html
     <!DOCTYPE html>
     <html>
@@ -20,7 +37,7 @@ d3 template for county and state level maps using Urban's style
 
         <h1>Title</h1>
         <div id="legend"></div>
-        <div id="map"><img src="path/to/fallback.png" alt="[Map]" />
+        <div id="map"><img src="path/to/fallback.png" alt="[Map]" /></div>
 
         <script src="lib/jquery.min.js"></script>
         <script src="lib/d3.min.js" charset="utf-8"></script>
@@ -44,7 +61,6 @@ d3 template for county and state level maps using Urban's style
 ```
 Option footer for links after map in child URL:
 ```html
-        </div>
         <div class="footnote">
             <p><b>Source</b>: Urban Institute, 2015
                 <a href="http://www.urban.org" target="_blank" class="urban"><span style="color:#1696d2">Urban</span> <span style="color:#000">Institute</span></a>
@@ -63,23 +79,6 @@ Option footer for links after map in child URL:
     <script>
         var pymParent = new pym.Parent('mapname', 'path/to/map.html', {});
     </script>
-```
-
-###Options
-```javascript
-    //minimum options necessary
-    data_url = "path/to/data.csv",
-        valuetomap = "colnamenofvalue",
-        countyid = "colnameofid",
-    //additional options if desired
-        nullcondition = "somevalue/symbol", //default = ""
-        colors = [custom or predefined array], //default = palette.blue5
-        missingcolor = "#xxxxxx", //default = "#ccc"
-        breaks = [array excluding min and max], //default = [0.2, 0.4, 0.6, 0.8]
-        legend_breaks = breaks OR [array including min and max], //default = [0, 0.2, 0.4, 0.6, 0.8, 1.0]
-        formatter =  d3.format("something"); //default =  d3.format("%"), percents rounded to whole number
-
-    var pymChild = new pym.Child();
 ```
 
 ###Examples

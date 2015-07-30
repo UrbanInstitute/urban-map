@@ -32,12 +32,12 @@ d3 template for county and state level maps using Urban's style
         valuetomap = "colnamenofvalue",
         countyid = "colnameofid",
     //additional options if desired
-        nullcondition = "somevalue/symbol" (default = ""),
-        colors = [custom or predefined array] (default = palette.blue5),
-        missingcolor = "#xxxxxx" (default = #ccc),
-        breaks = [array excluding min and max] (default = [0.2, 0.4, 0.6, 0.8]),
-        legend_breaks = breaks OR [array including min and max] (default = [0, 0.2, 0.4, 0.6, 0.8, 1.0]),
-        formatter =  d3.format("something") (default =  d3.format("%"));
+        nullcondition = "somevalue/symbol", //default = ""
+        colors = [custom or predefined array], //default = palette.blue5
+        missingcolor = "#xxxxxx", default = #ccc
+        breaks = [array excluding min and max], default = [0.2, 0.4, 0.6, 0.8]
+        legend_breaks = breaks OR [array including min and max], default = [0, 0.2, 0.4, 0.6, 0.8, 1.0]
+        formatter =  d3.format("something"); //default =  d3.format("%"), percents rounded to whole number
 
     var pymChild = new pym.Child();
 ```

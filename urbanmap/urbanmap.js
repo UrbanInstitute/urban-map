@@ -117,12 +117,12 @@ function urbanmap(container_width) {
         .attr("transform", "translate(" + marginl.left + "," + marginl.top + ")");
 
     if ($legend.width() < mobile_threshold) {
-        var lp_w = 10,
-            ls_w = 40,
+        var lp_w = 0,
+            ls_w = ((width - 10)/colors.length),
             ls_h = 18;
     } else {
         var lp_w = (3 * width / 5),
-            ls_w = 40,
+            ls_w = 30,
             ls_h = 18;
     }
 
